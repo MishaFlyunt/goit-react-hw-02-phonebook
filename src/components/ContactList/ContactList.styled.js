@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const ContactListStyled = styled.ul`
-  /* display: flex; */
+  margin-top: 15px;
 `;
 
 export const ContactItemStyled = styled.li`
   display: flex;
   gap: 10px;
+  margin-bottom: 15px;
 `;

@@ -16,6 +16,10 @@ export class App extends Component {
     filter: '',
   };
 
+  changeFilter = newFilter => {
+    this.setState({ filter: newFilter.target.value.toLowerCase().trim() });
+  };
+
   handleDelete = contId => {
     this.setState(prevState => {
       return {
@@ -36,13 +40,13 @@ export class App extends Component {
     const { contacts, filter } = this.state;
     const lowerCaseFilter = filter.toLowerCase();
 
-    return contacts.filter(contact => 
+    return contacts.filter(contact =>
       contact.name.toLowerCase().trim().includes(lowerCaseFilter)
     );
   };
 
   render() {
-    // const { contacts, filter } = this.state;
+    const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
     return (
       <Container>
@@ -50,7 +54,7 @@ export class App extends Component {
         <ContactForm onAdd={this.addName} />
 
         <h2>Contacts</h2>
-        <Filter />
+        <Filter filter={filter} onChangeFilter={this.changeFilter} />
         <ContactList contact={visibleContacts} onDelete={this.handleDelete} />
 
         <GlobalStyle />
