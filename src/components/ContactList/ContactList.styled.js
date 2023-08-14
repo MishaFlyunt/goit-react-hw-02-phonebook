@@ -9,3 +9,7 @@ export const ContactItemStyled = styled.li`
   gap: 10px;
   margin-bottom: 15px;
 `;
+
+export const ButtonStyled = styled.button`
+  border-radius: 15px;
+`;
