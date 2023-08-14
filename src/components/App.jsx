@@ -29,11 +29,19 @@ export class App extends Component {
   };
 
   addName = newName => {
-    this.setState(prevState => {
-      return {
-        contacts: [...prevState.contacts, newName],
-      };
-    });
+    const { contacts } = this.state;
+    contacts.some(
+      contact =>
+        contact.name.toLowerCase().trim() ===
+          newName.name.toLowerCase().trim() ||
+        contact.number.trim() === newName.number.trim()
+    )
+      ? alert(`${newName.name} is already in contacts`)
+      : this.setState(prevState => {
+          return {
+            contacts: [...prevState.contacts, newName],
+          };
+        });
   };
 
   getVisibleContacts = () => {
